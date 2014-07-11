@@ -1,0 +1,26 @@
+﻿@model TesoroQR.Models.Tesoro.Pista
+@{
+    ViewBag.Title = "Pista";
+}
+
+<div class ="jumbotron">
+    <h1>Pista N° @Model.orden </h1>
+</div>
+
+@{
+
+    int restante = 5 - Model.orden;
+
+}
+<div class="row">
+    
+    <div class="col-md-12">
+        <h1>@Model.Nombre</h1>
+        <h2>@Model.Descripcion</h2>
+        <h3 class="Verde" >Pistas Restantes para terminar el camino @Model.Circuito.Nombre es @restante.ToString()
+       
+        </h3>
+    </div>
+
+</div>
+

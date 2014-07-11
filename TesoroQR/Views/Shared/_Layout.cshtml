@@ -1,0 +1,77 @@
+﻿@*@using Microsoft.AspNet.Identity*@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Codigo Escondido</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Codigo Escondido", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Como Jugar", "ComoJugar", "Home")</li>
+                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                    
+                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+
+                    @if(this.User.IsInRole("Admin"))
+                    {
+                    <li class="dropdown">
+                       
+                            <a class=" dropdown-toggle"  id="dropdownMenu1" href="#" data-toggle="dropdown">
+                                Administracion
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    @Html.ActionLink("Administrar Partidas", "Index", "Partida",null, new { role="menuitem" ,tabindex="-1"})
+                                </li>
+                                <li role="presentation">
+                                     @Html.ActionLink("Ver Avance de los jugadores", "ListarPartidas", "Informes", null, new { role = "menuitem", tabindex = "-1" })
+                                </li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">otra cosa</a></li>
+                                
+                            </ul>
+                      
+                    </li>
+                    }
+                    @if(Request.IsAuthenticated)
+                    {
+                       
+                        <li>@Html.ActionLink("Ver mis Avances", "VerMiAvance", "Informes", new {jugadorName = this.User.Identity.Name },null)</li>
+                    }
+                    
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>Powered by FYG &copy; @DateTime.Now.Year - INFORMATORIO 2014</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

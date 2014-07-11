@@ -1,0 +1,42 @@
+﻿@model IEnumerable<TesoroQR.Models.Tesoro.Avance>
+@using TesoroQR.Models.Tesoro;
+
+
+@{
+    ViewBag.Title = "VerMiAvance";
+}
+
+<h2>Mis Avances</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Circuito
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UltimaPista)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Circuito.Nombre
+            </td>
+            <td>
+                @if (item.UltimaPista == 5)
+                {
+                    @:Completo
+           }
+                else
+                {
+                    @item.UltimaPista;@:/5
+                }
+            </td>
+
+        </tr>
+    }
+
+</table>
