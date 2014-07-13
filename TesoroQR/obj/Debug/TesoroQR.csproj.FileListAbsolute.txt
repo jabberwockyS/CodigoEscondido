@@ -182,3 +182,4 @@ C:\Users\sergio\Desktop\CodigoEscondido\TesoroQR\bin\zh-Hans\System.Spatial.reso
 C:\Users\sergio\Desktop\CodigoEscondido\TesoroQR\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\sergio\Desktop\CodigoEscondido\TesoroQR\obj\Debug\TesoroQR.dll
 C:\Users\sergio\Desktop\CodigoEscondido\TesoroQR\obj\Debug\TesoroQR.pdb
+C:\Users\sergio\Desktop\CodigoEscondido\TesoroQR\obj\Debug\TesoroQR.csprojResolveAssemblyReference.cache

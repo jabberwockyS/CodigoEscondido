@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 
@@ -8,8 +9,10 @@ namespace TesoroQR.Models.Tesoro
 {
     public class JuegoDBContext: DbContext
     {
-        public JuegoDBContext(): base("DefaultConnection")
+        public JuegoDBContext()
+            : base("JuegoDBContext")
         {
+            
 
         }
       
