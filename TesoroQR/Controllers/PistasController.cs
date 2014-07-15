@@ -221,7 +221,7 @@ namespace TesoroQR.Controllers
         {
             int orden = Id;
             if (Id > 15)
-              orden = Id - 5;
+              orden = Id - 15;
             else if (Id > 10)
               orden = Id - 10;
             else if (Id > 5)

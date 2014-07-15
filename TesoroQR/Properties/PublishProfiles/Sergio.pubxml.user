@@ -167,7 +167,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/10/2014 19:39:35</publishTime>
     </File>
     <File Include="bin/TesoroQR.dll">
-      <publishTime>07/13/2014 12:57:16</publishTime>
+      <publishTime>07/15/2014 00:31:41</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>07/10/2014 19:39:46</publishTime>
@@ -204,6 +204,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/Site.css">
       <publishTime>07/10/2014 19:45:34</publishTime>
+    </File>
+    <File Include="Controllers/PistasController.cs">
+      <publishTime>07/15/2014 00:27:22</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>07/10/2014 19:39:09</publishTime>
@@ -326,7 +329,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/07/2014 16:05:22</publishTime>
     </File>
     <File Include="Views/Account/_RemoveAccountPartial.cshtml">
-      <publishTime>07/11/2014 19:28:36</publishTime>
+      <publishTime>11/07/2014 19:28:36</publishTime>
     </File>
     <File Include="Views/Account/_RemoveExternalLoginsPartial.cshtml">
       <publishTime>07/11/2014 09:11:20</publishTime>
@@ -431,7 +434,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/07/2014 13:22:52</publishTime>
     </File>
     <File Include="Views/Pistas/Gano.cshtml">
-      <publishTime>07/07/2014 15:28:20</publishTime>
+      <publishTime>07/14/2014 23:42:05</publishTime>
     </File>
     <File Include="Views/Pistas/Index.cshtml">
       <publishTime>06/07/2014 13:22:52</publishTime>
@@ -473,7 +476,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/25/2014 10:31:04</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/13/2014 13:18:04</publishTime>
+      <publishTime>07/15/2014 00:36:05</publishTime>
     </File>
   </ItemGroup>
 </Project>
