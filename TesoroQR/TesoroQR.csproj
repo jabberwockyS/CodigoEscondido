@@ -315,6 +315,7 @@
     <Content Include="Views\Prueba\Index.cshtml" />
     <Content Include="Views\Home\ComoJugar.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Pistas\Termino.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

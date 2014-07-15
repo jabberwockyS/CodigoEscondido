@@ -97,5 +97,39 @@ namespace TesoroQR.Models.Tesoro
         {
             return db.Usuarios.Single(x => x.Nombre == nombre);
         }
+
+        internal void RegistrarFinal(Juego juego)
+        {
+
+            Juego juegoG = db.Juegos.Single(x=> x.JuegoID == juego.JuegoID);
+
+            juegoG.horaFin = DateTime.Now;
+
+            db.SaveChanges();
+        }
+
+        internal bool Termino(Usuario usuario, Partida partida)
+        {
+            
+
+            List<Avance> avances = ListarAvancePorJugador(usuario.UsuarioID, partida.PartidaID);
+
+            int completado = 0;
+
+            foreach(Avance avance in avances)
+            {
+                if (avance.UltimaPista == 5)
+                    completado += 1;
+
+            }
+
+            if (completado == 4)
+                return true;
+            else
+                return false;
+
+
+
+        }
     }
 }

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using TesoroQR.Models.Tesoro;
 
+
 namespace TesoroQR.Controllers
 {
     [Authorize]
@@ -15,6 +16,10 @@ namespace TesoroQR.Controllers
     {
 
         JuegoDBContext db = new JuegoDBContext();
+
+        TesoroRepository repo = new TesoroRepository();
+
+
         //
         // GET: /Pistas/
 
@@ -109,13 +114,28 @@ namespace TesoroQR.Controllers
                     Pista pista = db.Pistas.Single(x => x.Circuito.CircuitoID == queCircuito.CircuitoID && x.orden == queOrden);
 
 
+                    
+
+
                     if (queOrden == avance.UltimaPista + 1)
                     {
 
                         avance.UltimaPista = QueOrden(Id);
                         db.SaveChanges();
-                        //aca falta registrar en avance que termino ese camino
-                        return RedirectToAction("Gano", pista);
+
+
+                        //voy a controlar si gano, es decir, termino todos los circuitos
+
+                        if (repo.Termino(jugador,partida))
+                        {
+                            repo.RegistrarFinal(juego);
+                            return View("Termino");
+                        }
+                        else
+                        {
+
+                            return RedirectToAction("Gano", pista);
+                        }
 
                     }
                     else if (queOrden <= avance.UltimaPista)
@@ -237,6 +257,11 @@ namespace TesoroQR.Controllers
             pista.Circuito = db.Circuitos.Single(x => x.Pistas.Any(y => y.PistaID == pista.PistaID));
                 
             return View(pista);
+        }
+
+        public ActionResult Termino()
+        {
+            return View();
         }
 
         [Authorize(Users = "Admin")]
