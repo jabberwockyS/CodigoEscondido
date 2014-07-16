@@ -74,20 +74,40 @@ namespace TesoroQR.Controllers
             //aca controla que sea un codigo de inicio de camino
             if (Id == 1 || Id == 6 || Id == 11 || Id == 16)
             {
-                
+
+                Juego juegoAvance = db.Juegos.Single(x => x.Jugador.Nombre == nombreUsuario && x.Partida.Fecha.CompareTo(DateTime.Today) == 0);
+                    //cambiosss. voy a tratar de que cargue los cuatro circuitos pero con ultima pista 0, que indica que no emepzo el circuito
+
+                if (!db.Avances.Any(x => x.Juego.JuegoID == juegoNuevo.JuegoID))
+                 {
+                     
+                    foreach(Circuito circuito in circuitosList)
+                    {
+                        
+                        db.Avances.Add(new Avance() { UltimaPista = 0, Circuito = circuito, Juego = juegoAvance });
+                        //guardo el avance
+                       
+                    }
+                    db.SaveChanges();
+                 }
+
+               
+
+                    
                     
 
 
 
 
                      //aca controlo si ya no hay un avance registrado, de lo contrario quiere decir que no debo registrar la pista 1 del camino
-                    if (!db.Avances.Any(x => x.Circuito.CircuitoID == queCircuito.CircuitoID && x.Juego.JuegoID == juegoNuevo.JuegoID))
+                    if (db.Avances.Single(x => x.Juego.JuegoID == juegoAvance.JuegoID && x.Circuito.CircuitoID == queCircuito.CircuitoID).UltimaPista == 0)
                     {
-
-                        Juego juegoAvance = db.Juegos.Single(x => x.Jugador.Nombre == nombreUsuario && x.Partida.Fecha.CompareTo(DateTime.Today) == 0);
-                        db.Avances.Add(new Avance() { UltimaPista = 1, Circuito = queCircuito, Juego = juegoAvance });
-                        //guardo el avance
+                        Avance avance = db.Avances.Single(x => x.Juego.JuegoID == juegoAvance.JuegoID && x.Circuito.CircuitoID == queCircuito.CircuitoID);
+                        avance.UltimaPista = QueOrden(Id);
                         db.SaveChanges();
+
+
+                       
                         int orden = QueOrden(Id);
                         Pista pistaSalida = db.Pistas.Single(x => x.Circuito.CircuitoID == queCircuito.CircuitoID && x.orden == orden);
                         pistaSalida.Circuito = db.Circuitos.Single(x => x.Pistas.Any(y => y.PistaID == pistaSalida.PistaID));
