@@ -316,6 +316,7 @@
     <Content Include="Views\Home\ComoJugar.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
     <Content Include="Views\Pistas\Termino.cshtml" />
+    <Content Include="Views\Account\LoginAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
